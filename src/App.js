@@ -4,7 +4,8 @@ function App() {
     return (
         <div>
             <header>
-                <p>Edit</p>
+                <p class='font-logo bg-headerBlack text-8xl'>RB</p>
+                <p class=''>Save</p>
             </header>
         </div>
     );
