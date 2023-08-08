@@ -1,11 +1,30 @@
 import "./index.css";
+import { useSpring, animated } from "react-spring";
 
 function App() {
+    const [props, set] = useSpring(() => ({
+        transform: "rotate(0deg)",
+        config: { mass: 1, tension: 400, friction: 18 },
+    }));
+
+    const handleMouseEnter = () => {
+        set({ transform: "rotate(180deg)" });
+    };
+
     return (
-        <div class='bg-cream h-screen w-screen'>
-            <header class='bg-slate-300 text-center md:text-left'>
-                <div class='inline-block font-logo text-headerBlack p-6 text-6xl md:text-8xl transform-gpu hover:rotate-180 origin-center'>
-                    RB
+        <div className='bg-cream h-screen'>
+            <header className='text-left  border-b-0 w-[80%] ml-[10%]'>
+                <div
+                    className='inline-block'
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={() => set({ transform: "rotate(0deg)" })}
+                >
+                    <animated.div
+                        className='font-logo text-headerBlack p-8 text-6xl lg:text-8xl'
+                        style={props}
+                    >
+                        <div>RB</div>
+                    </animated.div>
                 </div>
             </header>
         </div>
